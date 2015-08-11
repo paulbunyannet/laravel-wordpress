@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+.env
+composer.phar
+/.idea
+/vendor
+public_html/wp
+public_html/bower_components
+.sass-cache
+.vagrant
+node_modules
+config.yaml
+puphpet/config.yaml
