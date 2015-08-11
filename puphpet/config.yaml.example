@@ -155,7 +155,7 @@ apache:
         av_q048befwrmnz:
             servername: vagrant.laravel-wordpress.com
             docroot: /home/user/public_html
-            port: '443'
+            port: '80'
             setenv:
                 - 'APP_ENV dev'
             custom_fragment: ''
@@ -280,27 +280,27 @@ mysql:
     adminer: '1'
     users:
         mysqlnu_cjmrcyjiq9ae:
-            name: username1
-            password: password
+            name: wordpress_user
+            password: wordpress_password
         mysqlnu_rzt5tf9w5e7d:
-            name: username2
+            name: username
             password: password
     databases:
         mysqlnd_f5vjv6uci2h5:
-            name: db_1
-            sql: /home/user/sql/db_1.sql
+            name: wordpress
+            sql: /home/user/sql/wordpress.sql
         mysqlnd_rx1lguanl7cv:
-            name: db_2
-            sql: /home/user/sql/db_2.sql
+            name: db
+            sql: /home/user/sql/db.sql
     grants:
         mysqlng_0fvedbxgcvzu:
-            user: username1
-            table: 'db_1.*'
+            user: wordpress_user
+            table: 'wordpress.*'
             privileges:
                 - ALL
         mysqlng_a1zljnjr3df4:
-            user: username2
-            table: 'db_2.*'
+            user: username
+            table: 'db.*'
             privileges:
                 - ALL
 mariadb:

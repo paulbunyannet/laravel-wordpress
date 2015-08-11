@@ -7,7 +7,9 @@ Use this package to create a new project including Laravel and Wordpress. Wordpr
 1. Run `composer install` to get all the required assets for this package. This will grab Laravel and Wordpress, along with install Node and Bower dependencies
 2. Update .env and puphpet/config.yaml with correct settings. The database connection settings should match.
 3. run `vagrant up` to spin up virtual machine for development
-4. open vagrant.laravel-wordpress.com in your browser, if the 2015 theme for workdpress loads then your good to go!
+4. generate a new key for Laravel by running `php artisan key:generate`
+5. open vagrant.laravel-wordpress.com in your browser, if the 2015 theme for workdpress loads then your good to go!
+6. Go to vagrant.laravel-wordpress.com/app and you should see the big "Laravel 5" splash screen.
 
 ### Vagrant Up
 
