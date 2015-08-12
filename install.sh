@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
 
 # install npm libraries
+command -v npm >/dev/null 2>&1 || { echo "NPM is not installed, aborting." >&2; exit 1; }
 echo "Installing Node dependencies"
 npm install &>/dev/null
 
+
 # install bower dependencies
-echo "Installing Bower dependencies"
+command -v bower >/dev/null 2>&1 || { echo "Bower is not installed. Please install by runnning 'npm install -g bower'. Aborting" >&2; exit 1; }
+echo "Installing Bower dependencies!"
 bower install &>/dev/null
+
+
+# install bower dependencies
+command -v grunt >/dev/null 2>&1 || { echo "Grunt is not installed. Please install by runnning 'npm install -g bower'. aborting" >&2; exit 1; }
+echo "Running Grunt for the first time!"
+grunt production &>/dev/null
+
 
 # make .env if not already created
  if [ ! -f ".env" ]

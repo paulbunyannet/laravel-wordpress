@@ -10,3 +10,4 @@ public_html/bower_components
 node_modules
 config.yaml
 puphpet/config.yaml
+public_html/app/assets/css/build
