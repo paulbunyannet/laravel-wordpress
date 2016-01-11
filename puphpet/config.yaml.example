@@ -3,15 +3,15 @@ vagrantfile:
     vm:
         box: puphpet/centos65-x64
         box_url: puphpet/centos65-x64
-        hostname: vagrant.laravel-wordpress.com
+        hostname: ''
         memory: '2048'
-        cpus: '4'
+        cpus: '2'
         chosen_provider: virtualbox
         network:
-            private_network: 192.168.56.106
+            private_network: 192.168.56.338
             forwarded_port:
                 vflnp_vid8ww5a83dk:
-                    host: '7714'
+                    host: '7040'
                     guest: '22'
         post_up_message: ''
         provider:
@@ -153,7 +153,7 @@ apache:
         - rewrite
     vhosts:
         av_q048befwrmnz:
-            servername: vagrant.laravel-wordpress.com
+            servername: vagrant.laravelwordpress.com
             docroot: /home/user/public_html
             port: '80'
             setenv:

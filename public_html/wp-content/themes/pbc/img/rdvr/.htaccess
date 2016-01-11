@@ -1,0 +1,9 @@
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+Options +Includes
+AddOutputFilter INCLUDES .html .htm .shtml
+
+Options +Indexes
+

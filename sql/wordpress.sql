@@ -78,12 +78,12 @@ CREATE TABLE `wp_options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1,	'siteurl',	'http://vagrant.laravel-wordpress.com/wp',	'yes'),
-(2,	'home',	'http://vagrant.laravel-wordpress.com/wp',	'yes'),
+(1,	'siteurl',	'http://vagrant.lawp.com/wp',	'yes'),
+(2,	'home',	'http://vagrant.lawp.com/wp',	'yes'),
 (3,	'blogname',	'Laravel &amp; Wordpress',	'yes'),
 (4,	'blogdescription',	'Just another WordPress site',	'yes'),
 (5,	'users_can_register',	'0',	'yes'),
-(6,	'admin_email',	'someone@vagrant.laravel-wordpress.com',	'yes'),
+(6,	'admin_email',	'someone@vagrant.lawp.com',	'yes'),
 (7,	'start_of_week',	'1',	'yes'),
 (8,	'use_balanceTags',	'0',	'yes'),
 (9,	'use_smilies',	'1',	'yes'),
@@ -246,9 +246,9 @@ CREATE TABLE `wp_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
-(1,	1,	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!',	'Hello world!',	'',	'publish',	'open',	'open',	'',	'hello-world',	'',	'',	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'',	0,	'http://vagrant.laravel-wordpress.com/wp/?p=1',	0,	'post',	'',	1),
-(2,	1,	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://vagrant.laravel-wordpress.com/wp/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!',	'Sample Page',	'',	'publish',	'open',	'open',	'',	'sample-page',	'',	'',	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'',	0,	'http://vagrant.laravel-wordpress.com/wp/?page_id=2',	0,	'page',	'',	0),
-(3,	1,	'2015-08-11 20:28:48',	'0000-00-00 00:00:00',	'',	'Auto Draft',	'',	'auto-draft',	'open',	'open',	'',	'',	'',	'',	'2015-08-11 20:28:48',	'0000-00-00 00:00:00',	'',	0,	'http://vagrant.laravel-wordpress.com/wp/?p=3',	0,	'post',	'',	0);
+(1,	1,	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!',	'Hello world!',	'',	'publish',	'open',	'open',	'',	'hello-world',	'',	'',	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'',	0,	'http://vagrant.lawp.com/wp/?p=1',	0,	'post',	'',	1),
+(2,	1,	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'This is an example page. It\'s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I\'m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin\' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href=\"http://vagrant.lawp.com/wp/wp-admin/\">your dashboard</a> to delete this page and create new pages for your content. Have fun!',	'Sample Page',	'',	'publish',	'open',	'open',	'',	'sample-page',	'',	'',	'2015-08-11 20:28:34',	'2015-08-11 20:28:34',	'',	0,	'http://vagrant.lawp.com/wp/?page_id=2',	0,	'page',	'',	0),
+(3,	1,	'2015-08-11 20:28:48',	'0000-00-00 00:00:00',	'',	'Auto Draft',	'',	'auto-draft',	'open',	'open',	'',	'',	'',	'',	'2015-08-11 20:28:48',	'0000-00-00 00:00:00',	'',	0,	'http://vagrant.lawp.com/wp/?p=3',	0,	'post',	'',	0);
 
 DROP TABLE IF EXISTS `wp_terms`;
 CREATE TABLE `wp_terms` (
@@ -338,6 +338,6 @@ CREATE TABLE `wp_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1,	'admin',	'$P$BqxhAzZWuFQLztiYMQEreWn3Ylz6wL0',	'admin',	'someone@vagrant.laravel-wordpress.com',	'',	'2015-08-11 20:28:34',	'',	0,	'admin');
+(1,	'admin',	'$P$BqxhAzZWuFQLztiYMQEreWn3Ylz6wL0',	'admin',	'someone@vagrant.lawp.com',	'',	'2015-08-11 20:28:34',	'',	0,	'admin');
 
 -- 2015-08-11 20:31:35

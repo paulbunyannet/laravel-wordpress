@@ -52,20 +52,6 @@
       "App\\": "app/"
     }
   },
-  "scripts": {
-    "pre-update-cmd": [
-      "php artisan clear-compiled"
-    ],
-    "post-update-cmd": [
-      "php artisan optimize",
-      "bash install.sh"
-    ],
-    "post-install-cmd": [
-      "php artisan clear-compiled",
-      "php artisan optimize",
-      "bash install.sh"
-    ]
-  },
   "config": {
     "preferred-install": "dist"
   }

@@ -1,0 +1,866 @@
+body.vod
+{
+background:#ffffff;
+
+}
+.vodBox
+{
+
+
+	width: 290px;
+
+	background:#e3edf8;
+
+
+
+
+
+}
+.vodBox div.top
+{
+
+
+	margin: 0;
+
+	padding:0;
+
+	height: 45px;
+
+	background-image:url(http://tvinfo.paulbunyan.net/vod/images/vod_top.gif);
+
+	background-position:center top;
+
+	background-repeat:no-repeat;
+
+	
+
+}
+h1.vod
+{
+
+
+	padding:11px 10px 0 60px;
+	
+	margin:0;
+
+	color:#003366;
+
+	font-family:arial,helvetica,sans-serif;
+
+	font-size:13px;
+
+	font-style:normal;
+
+	font-weight:bold;
+
+	text-align:left;
+
+	text-transform:uppercase;
+
+	vertical-align: middle;
+	border:none;
+
+
+
+}
+.vodBox div.bottom
+{
+
+
+	margin: 0px;
+
+	padding: 0px;
+
+	height: 18px;
+
+
+
+}
+.vodBoxInner
+{
+
+
+	background-image: url(http://tvinfo.paulbunyan.net/vod/images/vod_center.gif);
+
+	background-repeat: repeat-y;
+
+	background-position: center top;
+
+	margin: 0px;
+
+	padding: 4px 25px 5px 25px;
+
+	font-family: Verdana, sans-serif;
+
+
+
+}
+.vodBoxInner img.cover
+{
+
+
+	float:right;
+
+	margin:10px 10px 10px 10px;
+
+	border:1px solid #E3EDF8;
+	padding: 2px;
+
+	
+
+
+
+}
+.vodBoxInner img.cover_nospace
+{
+
+
+	float:right;
+
+	margin:0 10px 10px 0px;
+
+	border:1px solid #a0d6fb;
+
+	clip: rect(20px,0,20px,0);
+
+
+
+}
+.featuredimg
+{
+
+
+	float:left;
+
+	margin:0 10px 0px 10px;
+
+	border:1px solid #a0d6fb;
+
+	clip: rect(20px,0,20px,0);
+
+
+
+}
+.feature-box
+{
+
+
+
+margin:8px 0 3px 0;
+
+padding:0;
+
+
+}
+.feature-box a.Ftitle
+{
+
+	margin:0 0 3px 0;
+	
+	font-size: 12px;
+
+font-style: normal;
+
+font-weight: bold;
+
+text-transform: normal;
+
+letter-spacing: normal;
+
+
+
+}
+.feature-box h3.Ftitle
+{
+
+	margin:0 0 3px 0;
+	
+	font-size: 12px;
+
+font-style: normal;
+
+font-weight: bold;
+
+text-transform: normal;
+
+letter-spacing: normal;
+
+
+
+}
+.vodBoxInner h1.title
+{
+
+
+font-size: 16px;
+
+font-style: normal;
+
+font-weight: bold;
+
+letter-spacing: normal;
+
+margin:0;
+padding:0;
+text-transform:none;
+color:#000000;
+text-align:left;
+border:none;
+
+}
+.vodBoxInner h2.info
+{
+
+
+	font-size:11px;
+
+	font-style: normal;
+
+	font-weight: 700;
+
+	text-transform: none;
+
+	letter-spacing: normal;
+
+	margin:8px 0 7px 0;
+
+	padding:2px;
+
+	color: #003366;
+
+	background-color: #ffffff;
+
+	background-image: url(http://tvinfo.paulbunyan.net/vod/images/infobg.gif);
+
+	background-repeat: repeat-y;
+
+	background-position: left top;
+	text-align:left;
+	border:none;
+
+
+
+}
+.vodBoxInner div.disc p, .vodBoxInner p.disc
+{
+
+
+font-size: 11px;
+
+font-style: normal;
+
+font-weight: normal;
+
+text-transform: normal;
+
+letter-spacing: normal;
+
+line-height: 1.4em;
+
+margin:20px 0 0 0; padding:0;
+
+}
+.vodBoxInner p.runtime
+{
+
+	font-size: 10px;
+
+	font-style: normal;
+
+	font-weight: 100;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	line-height: 1.25em;
+
+	margin:8px 0 5px 0; 
+
+	padding:0;
+	
+	color:#000000;
+	background-color:#FFFFFF;
+
+
+}
+.vodBoxInner p.cast
+{
+
+
+	font-size: 10px;
+
+	font-style: normal;
+
+	font-weight: normal;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	line-height: 1.25em;
+
+	margin:10px 0 18px 0; 
+
+	padding:0;
+
+
+
+}
+.vodBoxInner p.Cat
+{
+
+
+	margin:0;
+
+	padding:0;
+
+	font-size: 11px;
+
+	font-style: normal;
+
+	font-weight: normal;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+	
+	margin:0 0 5px 0;
+
+	
+
+
+
+}
+.vodBoxInner ul.Cat
+{
+
+
+	margin:0;
+
+	padding:0;
+
+
+
+}
+.vodBoxInner li.Cat
+{
+
+
+	font-size:10px;
+
+	line-height:10px;
+
+	font-style: normal;
+
+	font-weight: normal;
+
+	text-transform: none;
+
+	letter-spacing: normal;
+
+	margin:0px 0 8px 0;
+
+	padding:3px;
+
+	color: #003366;
+
+	background-color: #e3edf8;
+
+	display:block;
+
+	list-style:none;
+
+
+
+}
+.vodBoxInner img.CatArrow
+{
+
+	padding:0px 5px 0 5px;
+	border:none;
+
+	display: inline-block;
+
+
+
+}
+.vodBoxInner li.Cat a, .vodBoxInner li.Cat a:visited
+{
+
+color: #333399; text-decoration: none;
+border:none;
+
+
+}
+.vodBoxInner li.Cat a:active, .vodBoxInner li.Cat a:hover
+{
+
+color: #CC3300; text-decoration: none;
+border:none;
+
+
+}
+.helperbox
+{
+
+	background-color: #FFCC00;
+	border-style: solid;
+	border-color: #cccccc;
+	border-width: 1px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #111111;
+	text-align: left;
+	margin: 5px 0 5px 10px;
+	padding: 8px;
+	width:200px;
+	float: right;	
+
+
+
+}
+.helperbox li
+{
+margin-left: 5px; 
+
+}
+.helperbox h2
+{
+
+	margin:0 0 3px 24px;
+	padding:0; 
+	color:#003366;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+
+
+}
+.catlistColumn
+{
+float:left;
+
+}
+h2.searchheader
+{
+margin-top:0; 
+
+}
+.searchBox
+{
+
+	background-color: #FFCC00;
+	border-style: solid;
+	border-color: #cccccc;
+	border-width: 1px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #111111;
+	text-align: center;
+	margin: 0px 10px 0px 10px;
+	padding: 6px 4px 4px 8px;
+	vertical-align:middle;
+	height: 30px;
+	
+
+}
+.searchBox input, .searchBox select
+{
+margin:3px 5px 0 0; 
+
+}
+.searchBox .searchButton
+{
+margin:0px 0px 0 0; padding:0 3px 0 0;
+
+}
+.searchBox input.searchArea
+{
+ width:260px; margin:0 0 0 3px; 
+
+}
+.VODtable
+{
+ 
+	margin: 15px 20px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align:left;
+	
+
+}
+.VODtableResult
+{
+ 
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align:left;
+	
+
+}
+.VODtable table, .VODtableResult table
+{
+
+	width:100%;
+	
+
+}
+.VODtable td, .VODtableResult td
+{
+
+
+	padding:0;
+
+	
+
+}
+.VODtable h1.title, .VODtableResult h1.title
+{
+
+
+	font-size: 16px;
+
+	font-style: normal;
+
+	font-weight: bold;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	margin:0 0 2px 0;
+
+	padding:0 0 2px 0;
+	text-transform:none;
+	BORDER:NONE;	
+
+
+
+}
+.VODtable h2.info, .VODtableResult h2.info
+{
+
+
+	font-size: 11px;
+
+	font-style: normal;
+
+	font-weight: 700;
+
+	text-transform: none;
+
+	letter-spacing: normal;
+
+	margin:0 0 10px 0;
+
+	padding:3px;
+
+	color: #003366;
+
+	background-color: #e3edf8;
+
+	background-image: url(http://tvinfo.paulbunyan.net/vod/images/infobg.gif);
+
+	background-repeat: repeat-y;
+
+	background-position: left top;
+
+	
+
+}
+.VODtable img.cover, .VODtableResult img.cover
+{
+
+
+	float:right;
+
+	margin:0 10px 10px 10px;
+
+	border:1px solid #a0d6fb;
+
+	clip: rect(20px,0,20px,0);
+
+
+
+}
+.VODtable p.disc, .VODtableResult p.disc
+{
+
+
+	font-size: 11px;
+
+	font-style: normal;
+
+	font-weight: normal;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	line-height: 1.4em;
+
+	margin:0 0 10px 0; padding:0;
+
+
+
+}
+.VODtable p.runtime, .VODtableResult p.runtime
+{
+
+	font-size: 10px;
+
+	font-style: normal;
+
+	font-weight: 100;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	line-height: 1.25em;
+
+	margin:8px 0 5px 0; 
+
+	padding:0;
+	
+	color:#000000;
+
+
+}
+.VODtable p.cast, .VODtableResult p.cast
+{
+
+
+	font-size: 10px;
+
+	font-style: normal;
+
+	font-weight: normal;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	line-height: 1.4em;
+
+	margin:5px 0 15px 0; 
+
+	padding:0;
+
+
+
+}
+.VODtable p.Cat, .VODtableResult p.Cat
+{
+
+
+	margin:0;
+
+	padding:0;
+
+	font-size: 11px;
+
+	font-style: normal;
+
+	font-weight: normal;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	
+
+
+
+}
+.VODtable ul.Cat, .VODtableResult ul.Cat
+{
+
+
+	margin:0;
+
+	padding:0;
+
+
+
+}
+.VODtable li.Cat, .VODtableResult li.Cat
+{
+
+
+	font-size:10px;
+
+	line-height:10px;
+
+	font-style: normal;
+
+	font-weight: normal;
+
+	text-transform: none;
+
+	letter-spacing: normal;
+
+	margin:0px 0 3px 0;
+
+	padding:3px;
+
+	color: #003366;
+
+	background-color: #ffffff;
+
+	display:block;
+
+	list-style:none;
+
+
+
+}
+.VODtable img.CatArrow, .VODtableResult img.CatArrow
+{
+
+	padding:0px 5px 0 5px;
+	border:none;
+
+	display: inline-block;
+
+
+
+}
+.VODtable li.Cat a, .VODtableResult li.Cat a, .VODtable li.Cat a:visited, .VODtableResult li.Cat a:visited
+{
+
+color: #333399; text-decoration: none;
+border:none;
+
+
+}
+.VODtable li.Cat a:active, .VODtableResult li.Cat a:active, .VODtable li.Cat a:hover, .VODtableResult li.Cat a:hover
+{
+
+color: #CC3300; text-decoration: none;
+border:none;
+
+
+}
+.vod_featured_slimbox
+{
+
+	margin:10px 10px;
+	
+
+}
+.vod_round_box
+{
+ 
+
+  background: #e3edf8;
+
+  margin:10px 15px 10px 0px; padding:0;
+
+
+
+}
+.vod_round_box_nospace
+{
+
+
+ background: #e3edf8;
+
+  margin:0px 0; padding:0;
+
+
+
+}
+.boxtop
+{
+ 
+
+  background: url(http://tvinfo.paulbunyan.net/vod/images/ne.gif) no-repeat top right; 
+
+
+
+}
+.boxtop div
+{
+ 
+
+  font-size: 0;
+
+  height: 10px; 
+
+  background: url(http://tvinfo.paulbunyan.net/vod/images/nw.gif) no-repeat top left; 
+
+
+
+}
+.boxbottom
+{
+ 
+
+  background: url(http://tvinfo.paulbunyan.net/vod/images/se.gif) no-repeat bottom right; 
+
+
+
+}
+.boxbottom div
+{
+ 
+
+  font-size: 0;
+
+  height: 10px; 
+
+  background: url(http://tvinfo.paulbunyan.net/vod/images/sw.gif) no-repeat bottom left; 
+
+
+
+}
+.boxbottom_nospace div
+{
+ 
+
+  font-size: 0;
+
+  height: 10px; 
+
+  background: url(http://tvinfo.paulbunyan.net/vod/images/sw.gif) no-repeat bottom left; 
+
+
+
+}
+.boxcontent
+{
+
+
+  padding: 0px 10px 0px 10px;
+
+
+
+}
+.boxcontent_nospace
+{
+
+  padding: 0px 10px 0px 0px;
+
+
+}
+.boxcontent p
+{
+	font-family: Verdana, sans-serif;
+
+	font-size: 11px;
+
+	font-style: normal;
+
+	font-weight: bold;
+
+	text-transform: normal;
+
+	letter-spacing: normal;
+
+	line-height: 1.5em;
+
+
+
+}

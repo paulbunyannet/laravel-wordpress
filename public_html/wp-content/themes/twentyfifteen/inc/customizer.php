@@ -29,7 +29,7 @@ function twentyfifteen_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( 'color_scheme', array(
 		'label'    => __( 'Base Color Scheme', 'twentyfifteen' ),
-		'section'  => 'colors',
+		'parcel_section'  => 'colors',
 		'type'     => 'select',
 		'choices'  => twentyfifteen_get_color_scheme_choices(),
 		'priority' => 1,
@@ -45,7 +45,7 @@ function twentyfifteen_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'sidebar_textcolor', array(
 		'label'       => __( 'Header and Sidebar Text Color', 'twentyfifteen' ),
 		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', 'twentyfifteen' ),
-		'section'     => 'colors',
+		'parcel_section'     => 'colors',
 	) ) );
 
 	// Remove the core header textcolor control, as it shares the sidebar text color.
@@ -61,7 +61,7 @@ function twentyfifteen_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_background_color', array(
 		'label'       => __( 'Header and Sidebar Background Color', 'twentyfifteen' ),
 		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', 'twentyfifteen' ),
-		'section'     => 'colors',
+		'parcel_section'     => 'colors',
 	) ) );
 
 	// Add an additional description to the header image section.
