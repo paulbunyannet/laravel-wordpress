@@ -11,3 +11,4 @@ node_modules
 config.yaml
 puphpet/config.yaml
 public_html/app/assets/css/build
+npm-debug.log
