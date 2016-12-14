@@ -1,21 +1,23 @@
 #!/usr/bin/env bash
 
-# install npm libraries
-command -v npm >/dev/null 2>&1 || { echo "NPM is not installed, aborting." >&2; exit 1; }
-echo "Installing Node dependencies"
-npm install &>/dev/null
+# install npm libraries with Yarn
+# https://code.facebook.com/posts/1840075619545360
+command -v yarn >/dev/null 2>&1 || { echo "Yarn is not installed, aborting." >&2; exit 1; }
+echo "Installing Node dependencies with Yarn"
+yarn install  &>/dev/null
 
-
-# install bower dependencies
-command -v bower >/dev/null 2>&1 || { echo "Bower is not installed. Please install by runnning 'npm install -g bower'. Aborting" >&2; exit 1; }
+# install Bower dependencies
+# https://bower.io/
+command -v bower >/dev/null 2>&1 || { echo "Bower is not installed. Please install by running 'npm install -g bower'. Aborting" >&2; exit 1; }
 echo "Installing Bower dependencies!"
 bower install &>/dev/null
 
 
-# install bower dependencies
-command -v grunt >/dev/null 2>&1 || { echo "Grunt is not installed. Please install by runnning 'npm install -g bower'. aborting" >&2; exit 1; }
-echo "Running Grunt for the first time!"
-grunt production &>/dev/null
+# install wordpress dependencies
+# https://getcomposer.org/
+command -v composer >/dev/null 2>&1 || { echo "Bower is not installed. Please install by running 'npm install -g bower'. Aborting" >&2; exit 1; }
+echo "Installing Composer dependencies!"
+composer install &>/dev/null
 
 
 # make .env if not already created

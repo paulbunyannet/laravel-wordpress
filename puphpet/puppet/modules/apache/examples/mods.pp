@@ -6,4 +6,3 @@
 class { 'apache':
   default_mods => true,
 }
-

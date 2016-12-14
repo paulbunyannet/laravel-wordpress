@@ -14,10 +14,10 @@
       "package": {
         "name": "wordpress",
         "type": "webroot",
-        "version": "4.2.4",
+        "version": "4.7.0",
         "dist": {
           "type": "zip",
-          "url": "https://github.com/WordPress/WordPress/archive/4.2.4.zip"
+          "url": "https://wordpress.org/wordpress-4.7.zip"
         },
         "require": {
           "fancyguy/webroot-installer": "1.0.0"
@@ -26,18 +26,22 @@
     }
   ],
   "require": {
-    "php": ">=5.5.9",
+    "php": ">=7.0.0",
     "wordpress": "4.*",
-    "laravel/framework": "5.1.*",
+    "laravel/framework": "5.3.*",
     "fancyguy/webroot-installer": "1.0.0",
     "symfony/yaml": "~2.4",
-    "vlucas/phpdotenv": "~1.1@dev"
+    "vlucas/phpdotenv": "~2.2",
+    "paulbunyannet/wordpress-artisan": "^1.0"
   },
   "require-dev": {
+    "phpspec/phpspec": "~2.1",
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~4.0",
-    "phpspec/phpspec": "~2.1"
+    "phpunit/phpunit": "~5.0",
+    "symfony/css-selector": "3.1.*",
+    "symfony/dom-crawler": "3.1.*",
+    "codeception/codeception": "^2.2"
   },
   "extra": {
     "webroot-dir": "public_html/wp",
@@ -47,10 +51,33 @@
     "classmap": [
       "database"
     ],
-    "files": [],
+    "files": [
+      "public_html/wp/wp-blog-head.php"
+    ],
     "psr-4": {
       "App\\": "app/"
     }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
+    ]
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "php artisan key:generate"
+    ],
+    "post-install-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postInstall",
+      "php artisan optimize"
+    ],
+    "post-update-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+      "php artisan optimize"
+    ]
   },
   "config": {
     "preferred-install": "dist"

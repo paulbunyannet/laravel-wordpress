@@ -1,58 +1,36 @@
-# puppet-sysctl
+[![Build Status](https://travis-ci.org/fiddyspence/puppet-sysctl.png?branch=master)](https://travis-ci.org/fiddyspence/puppet-sysctl)
 
-## Overview
+This is a puppet module to edit Linux kernel params using sysctl under the running kernel using a native type/provider.  It modifies both the running kernel, and optionally will persist settings in /etc/sysctl.conf
 
-Manage sysctl variable values. All changes are immediately applied, as well as
-configured to become persistent. Tested on Red Hat Enterprise Linux 6.
+EXAMPLE USAGE:
 
- * `sysctl` : Definition to manage sysctl variables by setting a value.
- * `sysctl::base`: Base class (included from the definition).
+    # puppet resource sysctl net.ipv4.ip_local_port_range permanent=no value="32768"$'\t'"61000"
+    notice: /Sysctl[net.ipv4.ip_local_port_range]/value: value changed '32768 61001' to '32768 61000'
+    sysctl { 'net.ipv4.ip_local_port_range':
+      ensure    => 'present',
+      permanent => 'yes',
+      value     => '32768 61000',
+    }
 
-For persistence to work, your Operating System needs to support looking for
-sysctl configuration inside `/etc/sysctl.d/`.
+There are some things to be aware of - namely:
 
-You may optionally enable purging of the `/etc/sysctl.d/` directory, so that
-all files which are not (or no longer) managed by this module will be removed.
+First - by default the available params are available on your platform by running sysctl -a
 
-Beware that for the purge to work, you need to either have at least one
-sysctl definition call left for the node, or include `sysctl::base` manually.
+Running puppet resource will give you available kernel tunables in the Puppet DSL
 
-You may also force a value to `ensure => absent`, which will always work.
+By default, we use /etc/sysctl.conf - to alter the target file) use
+    path => '/etc/adifferentsysctl.conf'
 
-For the few original settings in the main `/etc/sysct.conf` file, the value is
-also replaced so that running `sysctl -p` doesn't revert any change made by
-puppet.
+To change sysctl.conf use
 
-## Examples
+    permanent => yes|no
 
-Enable IP forwarding globally :
-```puppet
-sysctl { 'net.ipv4.ip_forward': value => '1' }
-```
+You can stick pretty much any string in value, note for multiwords use a single space - the provider squashes multiple spaces between single values to a single space.
 
-Set a value for maximum number of connections per UNIX socket :
-```puppet
-sysctl { 'net.core.somaxconn': value => '65536' }
-```
+License:
 
-Make sure we don't have any explicit value set for swappiness, typically
-because it was set at some point but no longer needs to be. The original
-value for existing nodes won't be reset until the next reboot :
-```puppet
-sysctl { 'vm.swappiness': ensure => absent }
-```
+See LICENSE file
 
-If the order in which the files get applied is important, you can set it by
-using a file name prefix, which could also be set globally from `site.pp` :
-```puppet
-Sysctl { prefix => '60' }
-```
+Changelog:
 
-To enable purging of settings, you can use hiera to set the `sysctl::base`
-`$purge` parameter :
-```yaml
----
-# sysctl
-sysctl::base::purge: true
-```
- 
+ - 9th July 2014 - adding Travis CI

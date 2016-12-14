@@ -12,3 +12,8 @@ config.yaml
 puphpet/config.yaml
 public_html/app/assets/css/build
 npm-debug.log
+puphpet/files/dot/ssh/*
+
+tests/_output/*
+tests/_support/_generated
+html

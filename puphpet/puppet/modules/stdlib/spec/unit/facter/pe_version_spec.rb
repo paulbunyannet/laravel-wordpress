@@ -26,6 +26,17 @@ describe "PE Version specs" do
     end
   end
 
+  context "When puppetversion is nil" do
+    before :each do
+      Facter.fact(:puppetversion).stubs(:value).returns(nil)
+    end
+
+    it "pe_version is nil" do
+      expect(Facter.fact(:puppetversion).value).to be_nil
+      expect(Facter.fact(:pe_version).value).to be_nil
+    end
+  end
+
   context "If PE is installed" do
     %w{ 2.6.1 2.10.300 }.each do |version|
       puppetversion = "2.7.19 (Puppet Enterprise #{version})"
