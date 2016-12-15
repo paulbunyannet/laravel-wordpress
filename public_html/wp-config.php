@@ -16,7 +16,7 @@
 
 require_once dirname(__DIR__) .'/vendor/autoload.php';
 Dotenv::load(dirname(__DIR__));
-Dotenv::required(['ENVIRONMENT','DB_DATABASE','DB_USERNAME','DB_PASSWORD','DB_HOST','DB_CHARSET','DB_PREFIX']);
+Dotenv::required(['DB_DATABASE','DB_USERNAME','DB_PASSWORD','DB_HOST','DB_CHARSET','DB_PREFIX']);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
