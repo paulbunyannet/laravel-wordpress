@@ -1,0 +1,40 @@
+version: '2'
+
+volumes:
+  db:
+    {}
+
+services:
+  laravel:
+    restart: always
+    build: .
+    image: pbc/laravel:latest
+    environment:
+      VIRTUAL_HOST: project1.local
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - "3030:80"
+  db:
+    restart: always
+    image: mysql:5.7
+    volumes:
+      - db:/var/lib/mysql/
+      #- ./database/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      explicit_defaults_for_timestamp: 1
+      TIMESTAMP: NOT NULL
+      VIRTUAL_PORT: 3306
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:3
+    restart: always
+    expose:
+      - '6379'
+    #redis conf file
