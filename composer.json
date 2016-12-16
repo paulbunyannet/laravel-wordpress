@@ -52,7 +52,7 @@
       "database"
     ],
     "files": [
-      "public_html/wp/wp-blog-head.php"
+      "public_html/wp/wp-blog-header.php"
     ],
     "psr-4": {
       "App\\": "app/"
