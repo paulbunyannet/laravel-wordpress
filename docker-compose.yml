@@ -14,7 +14,7 @@ networks:
 services:
   laravel:
     restart: always
-    container_name: ${IMAGE_NAME}_www
+    container_name: ${IMAGE_NAME}
     build: .
     image: pbc/laravel:latest
     environment:
@@ -27,7 +27,7 @@ services:
       - frontend
       - backend
   db:
-    container_name: ${IMAGE_NAME}_db
+    container_name: ${IMAGE_NAME}db
     restart: always
     image: mysql:5.7
     volumes:
@@ -47,7 +47,7 @@ services:
       - backend
 
   redis:
-    container_name: ${IMAGE_NAME}_redis
+    container_name: ${IMAGE_NAME}redis
     image: redis:3
     restart: always
     expose:
