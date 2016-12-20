@@ -19,6 +19,7 @@ services:
     image: pbc/laravel:latest
     environment:
       VIRTUAL_HOST: ${SERVER_NAME}
+      ServerName: ${SERVER_NAME}
     volumes:
       - ./:/var/www/html/
     ports:
