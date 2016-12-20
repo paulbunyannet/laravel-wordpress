@@ -4,23 +4,35 @@ volumes:
   db:
     {}
 
+networks:
+  frontend:
+    external: true
+  backend:
+    driver: bridge
+
+
 services:
   laravel:
     restart: always
+    container_name: ${IMAGE_NAME}_www
     build: .
     image: pbc/laravel:latest
     environment:
-      VIRTUAL_HOST: project1.local
+      VIRTUAL_HOST: ${SERVER_NAME}
     volumes:
       - ./:/var/www/html/
     ports:
-      - "3030:80"
+      - "80"
+    networks:
+      - frontend
+      - backend
   db:
+    container_name: ${IMAGE_NAME}_db
     restart: always
     image: mysql:5.7
     volumes:
       - db:/var/lib/mysql/
-      #- ./database/initdb.d:/docker-entrypoint-initdb.d
+#      - ./database/dump:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -30,11 +42,16 @@ services:
       TIMESTAMP: NOT NULL
       VIRTUAL_PORT: 3306
     ports:
-      - "3306:3306"
+      - "3306"
+    networks:
+      - backend
 
   redis:
+    container_name: ${IMAGE_NAME}_redis
     image: redis:3
     restart: always
     expose:
       - '6379'
+    networks:
+      - backend
     #redis conf file
