@@ -15,9 +15,11 @@ bower install &>/dev/null
 
 # install wordpress dependencies
 # https://getcomposer.org/
-command -v composer >/dev/null 2>&1 || { echo "Bower is not installed. Please install by running 'npm install -g bower'. Aborting" >&2; exit 1; }
+command -v composer >/dev/null 2>&1 || { echo "composer is not installed. Please install by running 'npm install -g composer'. Aborting" >&2; exit 1; }
 echo "Installing Composer dependencies!"
-composer install &>/dev/null
+composer install &>/dev/null || { echo "composer was run at least once, so I wont do an install. Initializing composer update....";}
+echo "updating Composer dependencies!"
+composer update;
 
 
 # make .env if not already created

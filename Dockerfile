@@ -1,6 +1,8 @@
 FROM php:7-apache
 
-MAINTAINER Steven 
+MAINTAINER Garret
+MAINTAINER Nelson
+MAINTAINER Steven
 
 #Download NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -

@@ -28,7 +28,7 @@ services:
       - frontend
       - backend
   db:
-    container_name: ${IMAGE_NAME}db
+    container_name: ${SUB_IMAGE_NAME}db
     restart: always
     image: mysql:5.7
     volumes:
@@ -48,7 +48,7 @@ services:
       - backend
 
   redis:
-    container_name: ${IMAGE_NAME}redis
+    container_name: ${SUB_IMAGE_NAME}redis
     image: redis:3
     restart: always
     expose:
