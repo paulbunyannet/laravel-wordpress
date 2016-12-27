@@ -22,24 +22,6 @@ loadenv
 #variables loaded <--
 ##############################################################
 ##############################################################
-echo "#########################################################################"
-echo "#########################################################################"
-echo "Would you like to remove the old node_modules and vendor folder?"
-echo "Intro y and press enter to accept, anything else to skip this option"
-echo "#########################################################################"
-echo "#########################################################################"
-read -e -p ">>:" choice;
-if [ "$choice" == "y" ] ; then
-  rm -rf vendor;
-  rm -rf composer.lock;
-  rm -rf node_modules;
-elif ["$choice" == "Y" ]; then
-  rm -rf vendor;
-  rm -rf node_modules;
-  rm -rf composer.lock;
-fi
-
-
 
 ##############################################################
 ##############################################################
@@ -138,13 +120,34 @@ echo "OK - $SERVER_NAME is running. IP: $NETWORK, is running as well and has bei
     echo "#########################################################################"
     ImageName="$(docker ps -qf "name=${IMAGE_NAME}")"
 
+echo "#########################################################################"
+echo "#########################################################################"
+echo "Would you like to install dependencies?"
+echo "Intro y and press enter to accept, anything else to skip this option"
+echo "-------------------------------------------------------------------------"
+read -e -p "##### (y??)>>: " choiceb;
+echo " ";
+case $choiceb in
+    [yY][eE][sS]|[yY])
     echo "#########################################################################"
-    echo "Now going to install dependencies";
+    echo "removing dependencies folders";
+    echo "#########################################################################"
+      rm -rf vendor;
+      rm -rf node_modules;
+      rm -rf composer.lock;
+    echo "#########################################################################"
+    echo "Now installing dependencies";
     echo "#########################################################################"
     echo "Opening ${IMAGE_NAME} --> container ID: $ImageName";
     docker exec -it $ImageName ./install.sh
     echo "#########################################################################"
-    echo "Now going into command line (type exit and press enter to leave the container)";
+        ;;
+        *)
+    echo "#########################################################################"
+    echo "Opening ${IMAGE_NAME} --> container ID: $ImageName";
+        ;;
+esac
+    echo "Going into command line (type exit and press enter to leave the container)";
     docker exec -it $ImageName bash
     echo "#########################################################################"
     echo "#################/-------------------------------------\#################"
