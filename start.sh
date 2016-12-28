@@ -11,5 +11,3 @@ composer install
 echo "End of Composer Install"
 
 apache2-foreground
-
-
