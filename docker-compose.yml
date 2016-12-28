@@ -12,6 +12,23 @@ networks:
 
 
 services:
+  web:
+    restart: always
+    container_name: ${SUB_IMAGE_NAME}apache
+    image: pbc/httpd:alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.httpd
+    volumes:
+    - ./:/var/www/html
+    expose:
+    - "80"
+    labels:
+    - "traefik.docker.network=frontend"
+    networks:
+    - frontend
+    - backend
+
   laravel:
     restart: always
     container_name: ${IMAGE_NAME}
@@ -21,11 +38,11 @@ services:
       ServerName: ${SERVER_NAME}
     volumes:
       - ./:/var/www/html/
-    ports:
-      - "80"
+    expose:
+      - "9000"
     networks:
-      - frontend
       - backend
+
   db:
     container_name: ${SUB_IMAGE_NAME}db
     restart: always
@@ -52,4 +69,4 @@ services:
       - '6379'
     networks:
       - backend
-    #redis conf file
+    #TODO: redis conf file for security
