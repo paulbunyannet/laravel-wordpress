@@ -46,25 +46,11 @@ elif [ "$RUNNING" == "false" ]; then
 
 fi
 if  [ "$FRONTENDRUNNING" == "false" ]; then
-    echo "#################"
-    echo "Setting the proxy"
-    echo "#################"
-    cd proxy
-    #cd nginx #this command or the next one
-    cd traefik #this command or the previous one
-#    docker-compose up
-    docker build . -t pbc/traefik
-    cd ..
-    cd ..
-
-    docker run -d -p 8080:8080 -p 80:80 -p 443:443 -e DEFAULT_HOST=frontend --name=frontend  --restart=always -v /var/run/docker.sock:/var/run/docker.sock pbc/traefik
-    #docker run -d -p 8080:8080 -p 80:80 -e DEFAULT_HOST=nginx.proxy --name=nginx-proxy --restart=always  -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy
+    docker run -d -p 8080:8080 -p 80:80 -p 443:443 --name=frontend  --restart=always -v /var/run/docker.sock:/var/run/docker.sock pbc/traefik
 
     docker network create frontend
-    #docker network create nginx
 
     docker network connect frontend frontend
-    #docker network connect nginx nginx-proxy
 fi
 ##############################################################
 ##############################################################
@@ -75,12 +61,15 @@ fi
 #now added this to the host file if it doesnt exist
 ## this will only work on macs (I havent tested on windows --sorry Garret)
 ##############################################################
-    echo "#################"
-    echo "check host"
-    echo "#################"
+echo "#################"
+echo "check host"
+echo "#################"
 STARTED=$(docker inspect --format="{{ .State.StartedAt }}" $CONTAINER)
-#NETWORK=$(docker inspect --format="{{ .NetworkSettings.IPAddress }}" $CONTAINER)
 NETWORK=$(docker-machine ip default)
+# Fallback to localhost if docker-machine not found or error occurs
+if [ $? -eq 0 ]; then
+    NETWORK=127.0.0.1
+fi
 
 matches_in_hosts="$(grep -n ${SERVER_NAME} /etc/hosts | cut -f1 -d:)"
 host_entry="${NETWORK} ${SERVER_NAME}"
