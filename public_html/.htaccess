@@ -1,17 +1,3 @@
 # BEGIN WordPress
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /wp/
-
-    # cache busting
-     RewriteCond %{REQUEST_FILENAME} !-f
-     RewriteCond %{REQUEST_FILENAME} !-d
-     RewriteRule ^(.+)\.(\d+)\.(js|css|png|PNG|jpg|JPG|jpeg|JPEG|gif|GIF|eot|woff|ttf|svg)$ ../$1.$3 [L]
-
-    RewriteRule ^index\.php$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^[\w/-]+$ /wp/index.php [L]
-</IfModule>
 
 # END WordPress

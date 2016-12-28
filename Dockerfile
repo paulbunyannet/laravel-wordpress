@@ -1,8 +1,10 @@
-FROM php:7-apache
+FROM php:7-fpm
 
 MAINTAINER Garrett
 MAINTAINER Nelson
 MAINTAINER Steven
+
+COPY php.ini /usr/local/etc/php/
 
 #Download NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
@@ -28,18 +30,17 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 #Install gulp bower and grunt
 RUN yarn global add --no-bin-links gulp bower grunt-cli
 
-#Used to turn on modrewrite for apache
-RUN a2enmod rewrite
+# Disable composer warnings
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
-COPY ./package.json /var/www/html
+#Install Prestissimo
+RUN composer global require "hirak/prestissimo:^0.3"
 
 #COPY over start script
 COPY start.sh /run/
 
 #Gives execute permissions
 RUN chmod +x /run/start.sh
-
-COPY 000-default.conf /etc/apache2/sites-enabled/
 
 #Run start script
 CMD ["/bin/sh" , "/run/start.sh"]
