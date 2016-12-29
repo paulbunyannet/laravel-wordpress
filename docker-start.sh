@@ -1,4 +1,5 @@
 #!/bin/sh
+
 ##############################################################
 ##############################################################
 #load variables of env file
@@ -32,7 +33,7 @@ CONTAINER=frontend
 FRONTENDRUNNING="true"
 #important this will set the default vb machine so is found every time
 ##set docker default image to default used one
-eval "$(docker-machine env default)"
+#eval "$(docker-machine env default)"
 #check if the front end is running. if not run it from scratch
 RUNNING=$(docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
 
@@ -65,44 +66,52 @@ echo "#################"
 echo "check host"
 echo "#################"
 STARTED=$(docker inspect --format="{{ .State.StartedAt }}" $CONTAINER)
-NETWORK=$(docker-machine ip default)
+#NETWORK=$(docker-machine ip default)
 # Fallback to localhost if docker-machine not found or error occurs
-if [ -z "$NETWORK" ]; then
+#if [ -z "$NETWORK" ]; then
     NETWORK=127.0.0.1
-    echo "ip not found, setting it to localhost: ${NETWORK}"
-else
-    echo "ip found: ${NETWORK}"
-fi
+#fi
 
 matches_in_hosts="$(grep -n ${SERVER_NAME} /etc/hosts | cut -f1 -d:)"
 host_entry="${NETWORK} ${SERVER_NAME}"
 
-echo "#########################################################################"
-echo "#########################################################################"
-echo "# Please enter your password if requested so the host file is modified. #"
-echo "#########################################################################"
-echo "#########################################################################"
-
-if [ ! -z "$matches_in_hosts" ]
-then
-    echo "Updating existing hosts entry."
-    # iterate over the line numbers on which matches were found
-    while read -r line_number; do
-        # replace the text of each line with the desired host entry
-        sudo sed -i '' "${line_number}s/.*/${host_entry} /" /etc/hosts
-    done <<< "$matches_in_hosts"
-else
-    echo "Adding new hosts entry."
-    echo "$host_entry" | sudo tee -a /etc/hosts > /dev/null
-fi
-
-echo "OK - $CONTAINER is running. IP: $NETWORK, StartedAt: $STARTED"
-echo "OK - $SERVER_NAME is running. IP: $NETWORK, is running as well and has being added to the host file or it was already there ;)"
+#echo "#########################################################################"
+#echo "#########################################################################"
+#echo "# Please enter your password if requested so the host file is modified. #"
+#echo "#########################################################################"
+#echo "#########################################################################"
+#
+#if [ ! -z "$matches_in_hosts" ]
+#then
+#    echo "Updating existing hosts entry."
+#    # iterate over the line numbers on which matches were found
+#    while read -r line_number; do
+#        # replace the text of each line with the desired host entry
+#        sudo sed -i '' "${line_number}s/.*/${host_entry} /" /etc/hosts
+#    done <<< "$matches_in_hosts"
+#else
+#    echo "Adding new hosts entry."
+#    echo "$host_entry" | sudo tee -a /etc/hosts > /dev/null
+#fi
+#
+#echo "OK - $CONTAINER is running. IP: $NETWORK, StartedAt: $STARTED"
+#echo "OK - $SERVER_NAME is running. IP: $NETWORK, is running as well and has being added to the host file or it was already there ;)"
 
 ##############################################################
 ##############################################################
 
-docker build . -q;
+echo "#########################################################################"
+echo "#########################################################################"
+echo "#########################################################################"
+echo "Would you like to build the docker images?"
+echo "Intro y and press enter to accept, anything else to skip this option"
+echo "-------------------------------------------------------------------------"
+read -e -p "##### (y??)>>: " build;
+echo " ";
+case $build in
+    [yY][eE][sS]|[yY])
+    docker-compose build;
+esac
 docker-compose up -d;
 echo "#########################################################################"
 echo "#########################################################################"
@@ -130,16 +139,18 @@ case $answer in
     echo "Now installing dependencies";
     echo "#########################################################################"
     echo "Opening ${IMAGE_NAME} --> container ID: $ImageName";
-    docker exec -it $ImageName ./install.sh
+    docker exec -it ${SUB_IMAGE_NAME}laravel ./install.sh
+    docker exec -it ${SUB_IMAGE_NAME}laravel php artisan key:generate
     echo "#########################################################################"
         ;;
         *)
     echo "#########################################################################"
-    echo "Opening ${IMAGE_NAME} --> container ID: $ImageName";
+    echo "Opening ${SUB_IMAGE_NAME}laravel --> container ID: $ImageName";
         ;;
 esac
+
     echo "Going into command line (type exit and press enter to leave the container)";
-    docker exec -it $ImageName bash
+    docker exec -it ${SUB_IMAGE_NAME}laravel bash
     echo "#########################################################################"
     echo "#################/-------------------------------------\#################"
     echo "################|  Paul Bunyan Communications Rocks!!!  |################"
