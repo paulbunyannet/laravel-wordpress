@@ -67,8 +67,11 @@ echo "#################"
 STARTED=$(docker inspect --format="{{ .State.StartedAt }}" $CONTAINER)
 NETWORK=$(docker-machine ip default)
 # Fallback to localhost if docker-machine not found or error occurs
-if [ $? -eq 0 ]; then
+if [ -z "$NETWORK" ]; then
     NETWORK=127.0.0.1
+    echo "ip not found, setting it to localhost: ${NETWORK}"
+else
+    echo "ip found: ${NETWORK}"
 fi
 
 matches_in_hosts="$(grep -n ${SERVER_NAME} /etc/hosts | cut -f1 -d:)"
@@ -99,24 +102,23 @@ echo "OK - $SERVER_NAME is running. IP: $NETWORK, is running as well and has bei
 ##############################################################
 ##############################################################
 
-#function compose_up(){
-    docker build . -q;
-    docker-compose up -d;
-    echo "#########################################################################"
-    echo "#########################################################################"
-    echo "if you encounter errors, please check that the machines are not running before running this script";
-    echo "#########################################################################"
-    echo "#########################################################################"
-    ImageName="$(docker ps -qf "name=${IMAGE_NAME}")"
+docker build . -q;
+docker-compose up -d;
+echo "#########################################################################"
+echo "#########################################################################"
+echo "if you encounter errors, please check that the machines are not running before running this script";
+echo "#########################################################################"
+echo "#########################################################################"
+ImageName="$(docker ps -qf "name=${IMAGE_NAME}")"
 
 echo "#########################################################################"
 echo "#########################################################################"
 echo "Would you like to install dependencies?"
 echo "Intro y and press enter to accept, anything else to skip this option"
 echo "-------------------------------------------------------------------------"
-read -e -p "##### (y??)>>: " choiceb;
+read -e -p "##### (y??)>>: " answer;
 echo " ";
-case $choiceb in
+case $answer in
     [yY][eE][sS]|[yY])
     echo "#########################################################################"
     echo "removing dependencies folders";
@@ -169,3 +171,8 @@ esac
     echo "██ ▓▓ ▓▓ ██ ██ ██ ██ ██ ── ── ── ██ ▓▓ ▓▓ ██ ██ "
     echo "██ ▓▓ ▓▓ ██ ██ ── ── ── ── ── ── ── ██ ██ ██ ── "
     echo "── ██ ██ ── ── ── ── ── ── ── ── ── ── ── ── ── "
+    echo "#########################################################################"
+    echo "#################/-------------------------------------\#################"
+    echo "################|  Paul Bunyan Communications Rocks!!!  |################"
+    echo "#################\-------------------------------------/#################"
+    echo "#########################################################################"
