@@ -29,13 +29,6 @@ composer update;
     echo ".env was created from example file"
  fi
 
-# create puphet config if not already created
-if [ ! -f "puphpet/config.yaml" ]
-then
-    cp puphpet/config.yaml.example puphpet/config.yaml
-    echo "puphpet config.yaml file was created from example file"
-fi
-
 # cleanup wordpress instal
 if [ -d "public_html/wp/wp-content" ]
 then
