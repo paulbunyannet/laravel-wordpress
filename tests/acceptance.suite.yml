@@ -7,6 +7,16 @@
 class_name: AcceptanceTester
 modules:
     enabled:
-        - PhpBrowser:
-            url: http://localhost/myapp
+        - WebDriver:
+            url: 'http://laravelwordpress.local'
+            host: localhost
+            browser: firefox
+            port: 4444
+            window_size: 1366x768
+            clear_cookies: 1
+            restart: 1
+            capabilities:
+               unexpectedAlertBehaviour: 'accept'
+               javascriptEnabled: true
+               locationContextEnabled: true
         - \Helper\Acceptance

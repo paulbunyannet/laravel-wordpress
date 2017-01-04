@@ -17,3 +17,5 @@ puphpet/files/dot/ssh/*
 tests/_output/*
 tests/_support/_generated
 html
+puphpet
+codecept.phar
