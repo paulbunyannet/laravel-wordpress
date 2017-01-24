@@ -60,7 +60,7 @@ fi
 ##############################################################
 ##############################################################
 #now added this to the host file if it doesnt exist
-## this will only work on macs (I havent tested on windows --sorry Garret)
+## this will only work on macs (I havent tested on windows --sorry Garrett)
 ##############################################################
 echo "#################"
 echo "check host"
@@ -118,7 +118,7 @@ echo "#########################################################################"
 echo "if you encounter errors, please check that the machines are not running before running this script";
 echo "#########################################################################"
 echo "#########################################################################"
-ImageName="$(docker ps -qf "name=${IMAGE_NAME}")"
+ImageName="$(docker-compose ps -q laravel)"
 
 echo "#########################################################################"
 echo "#########################################################################"
@@ -134,23 +134,22 @@ case $answer in
     echo "#########################################################################"
       rm -rf vendor;
       rm -rf node_modules;
-      rm -rf composer.lock;
     echo "#########################################################################"
     echo "Now installing dependencies";
     echo "#########################################################################"
-    echo "Opening ${IMAGE_NAME} --> container ID: $ImageName";
-    docker exec -it ${SUB_IMAGE_NAME}laravel ./install.sh
-    docker exec -it ${SUB_IMAGE_NAME}laravel php artisan key:generate
+    echo "Opening laravel --> container ID: $ImageName";
+    docker-compose exec laravel ./install.sh
+    docker-compose exec laravel php artisan key:generate
     echo "#########################################################################"
         ;;
         *)
     echo "#########################################################################"
-    echo "Opening ${SUB_IMAGE_NAME}laravel --> container ID: $ImageName";
+    echo "Opening laravel --> container ID: $ImageName";
         ;;
 esac
 
     echo "Going into command line (type exit and press enter to leave the container)";
-    docker exec -it ${SUB_IMAGE_NAME}laravel bash
+    docker-compose exec laravel bash
     echo "#########################################################################"
     echo "#################/-------------------------------------\#################"
     echo "################|  Paul Bunyan Communications Rocks!!!  |################"

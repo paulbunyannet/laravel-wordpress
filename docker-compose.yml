@@ -14,7 +14,6 @@ networks:
 services:
   web:
     restart: always
-    container_name: ${IMAGE_NAME}
     image: pbc/httpd:alpine
     build:
       context: .
@@ -32,7 +31,6 @@ services:
 
   laravel:
     restart: always
-    container_name: ${SUB_IMAGE_NAME}laravel
     build: .
     image: pbc/laravel:latest
     environment:
@@ -45,7 +43,6 @@ services:
       - backend
 
   db:
-    container_name: ${SUB_IMAGE_NAME}db
     restart: always
     image: mysql:5.7
     volumes:
@@ -64,7 +61,6 @@ services:
       - backend
 
   redis:
-    container_name: ${SUB_IMAGE_NAME}redis
     image: redis:3
     restart: always
     expose:
