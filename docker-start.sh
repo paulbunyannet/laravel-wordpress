@@ -69,11 +69,11 @@ case $ARG1 in
     echo "########################################################################################";
             exit;
     ;;
-    [dD][oO][wW][nN]|[-][dD][oO][wW][nN]|[-][dD][oO][wW][nN])
+    [dD][oO][wW][nN]|[-][dD][oO][wW][nN]|[-][-][dD][oO][wW][nN])
             docker-compose down;
             exit;
     ;;
-    [oO][pP][eE][nN]|[-][oO][pP][eE][nN]|[-][oO][pP][eE][nN])
+    [oO][pP][eE][nN]|[-][oO][pP][eE][nN]|[-][-][oO][pP][eE][nN])
             CONT=laravel
             LARAVELRUNNING="true"
             LARAVELRUNNING=$(docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
@@ -417,9 +417,9 @@ if [ "$REMOVEDEPENDENCIES" == "$TRUE" ]; then
     echo "#########################################################################${CYAN}"
     echo "#########################################################################"
     echo "php artisan key:generate"
-#    read -e -p "composer update ... press enter" answer;
+    #read -e -p "composer update ... press enter" answer;
     docker-compose exec laravel php artisan key:generate
-#    read -e -p "artisan key ... press enter" answer;
+    #read -e -p "artisan key ... press enter" answer;
 
     echo "#########################################################################${NONE}"
 

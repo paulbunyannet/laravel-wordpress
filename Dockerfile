@@ -27,6 +27,9 @@ RUN docker-php-ext-install -j$(nproc) gd
 #Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php --install-dir=/usr/bin --filename=composer && php -r "unlink('composer-setup.php');"
 
+#Install Codeception
+RUN curl -O http://codeception.com/codecept.phar && chmod +x codecept.phar && mv codecept.phar /usr/local/bin/codecept
+
 #Install gulp bower and grunt
 RUN yarn global add --no-bin-links gulp bower grunt-cli
 

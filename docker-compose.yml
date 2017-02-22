@@ -9,6 +9,8 @@ networks:
     external: true
   backend:
     driver: bridge
+  testend:
+    driver: bridge
 
 
 services:
@@ -28,6 +30,7 @@ services:
     networks:
     - frontend
     - backend
+    - testend
 
   laravel:
     restart: always
@@ -37,6 +40,8 @@ services:
       ServerName: ${SERVER_NAME}
     volumes:
       - ./:/var/www/html/
+    depends_on:
+      - hub
     expose:
       - "9000"
     networks:
@@ -60,6 +65,53 @@ services:
     networks:
       - backend
 
+  hub:
+    image: selenium/hub
+    privileged: true
+    ports:
+      - "4444:4444"
+    environment:
+      - GRID_TIMEOUT=120000
+      - GRID_BROWSER_TIMEOUT=120000
+    networks:
+      - testend
+      - backend
+
+  chrome:
+    image: selenium/node-chrome-debug
+#    image: selenium/standalone-chrome-debug
+    environment:
+      - no_proxy=localhost
+      - TZ=America/Chicago
+      - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    expose:
+      - '4444'
+      - '5900'
+    depends_on:
+      - hub
+    links:
+      - hub
+    networks:
+      - testend
+
+  firefox:
+    image: selenium/node-firefox-debug
+#    image: selenium/standalone-firefox-debug
+    environment:
+      - no_proxy=localhost
+      - TZ=America/Chicago
+      - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    expose:
+      - '4444'
+    depends_on:
+      - hub
+    links:
+      - hub
+    networks:
+      - testend
+
   redis:
     image: redis:3
     restart: always
@@ -67,4 +119,7 @@ services:
       - '6379'
     networks:
       - backend
+      
     #TODO: redis conf file for security
+
+
